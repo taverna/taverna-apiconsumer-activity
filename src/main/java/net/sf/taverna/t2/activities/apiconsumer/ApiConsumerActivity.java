@@ -20,6 +20,7 @@
  ******************************************************************************/
 package net.sf.taverna.t2.activities.apiconsumer;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -32,7 +33,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import net.sf.taverna.t2.activities.dependencyactivity.AbstractAsynchronousDependencyActivity;
 import net.sf.taverna.t2.reference.ExternalReferenceSPI;
 import net.sf.taverna.t2.reference.ReferenceService;
@@ -40,12 +40,11 @@ import net.sf.taverna.t2.reference.ReferenceServiceException;
 import net.sf.taverna.t2.reference.ReferenceSet;
 import net.sf.taverna.t2.reference.T2Reference;
 import net.sf.taverna.t2.reference.impl.external.object.VMObjectReference;
+import net.sf.taverna.t2.workflowmodel.Edits;
 import net.sf.taverna.t2.workflowmodel.OutputPort;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityConfigurationException;
 import net.sf.taverna.t2.workflowmodel.processor.activity.AsynchronousActivityCallback;
 import uk.org.taverna.configuration.app.ApplicationConfiguration;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * API consumer activity enables users to execute a method on a class
@@ -67,8 +66,8 @@ public class ApiConsumerActivity extends AbstractAsynchronousDependencyActivity 
 	 * Constructs a new <code>ApiConsumerActivity</code>.
 	 * @param applicationConfiguration
 	 */
-	public ApiConsumerActivity(ApplicationConfiguration applicationConfiguration) {
-		super(applicationConfiguration);
+	public ApiConsumerActivity(Edits edits, ApplicationConfiguration applicationConfiguration) {
+		super(edits, applicationConfiguration);
 	}
 
 	@Override

@@ -20,19 +20,18 @@
  ******************************************************************************/
 package net.sf.taverna.t2.activities.apiconsumer;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
-
 import net.sf.taverna.t2.workflowmodel.Edits;
+import net.sf.taverna.t2.workflowmodel.impl.EditsImpl;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityFactory;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityInputPort;
 import net.sf.taverna.t2.workflowmodel.processor.activity.ActivityOutputPort;
 import uk.org.taverna.configuration.app.ApplicationConfiguration;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * An {@link ActivityFactory} for creating <code>ApiConsumerActivity</code>.
@@ -46,7 +45,7 @@ public class ApiConsumerActivityFactory implements ActivityFactory {
 
 	@Override
 	public ApiConsumerActivity createActivity() {
-		return new ApiConsumerActivity(applicationConfiguration);
+		return new ApiConsumerActivity(new EditsImpl(), applicationConfiguration);
 	}
 
 	@Override
